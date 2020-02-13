@@ -35,7 +35,7 @@ const addTeammate = role => {
             inquirer
                 .prompt(questions.internQuestions)
                 .then(answers => {
-                    let intern = new Engineer(answers.name, answers.id, answers.email, answers.school);
+                    let intern = new Intern(answers.name, answers.id, answers.email, answers.school);
                     console.log(intern);
                     team.push(intern);
                     return teamPrompt();
@@ -55,8 +55,8 @@ const teamPrompt = () => {
             }
         ])
         .then(answer => {
-            if (answer === 'done') {
-                return;
+            if (answer.choice === 'done') {
+                return console.log(team);
             }
             return addTeammate(answer.choice);
         })
@@ -67,6 +67,6 @@ const teamPrompt = () => {
 
 // every team starts with a manager, so this app also begins with adding the team manager. then the user will be prompted to select however many engineers and/or interns they want to have on the team
 addManager();
-console.log(team);
+
 
 
