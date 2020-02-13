@@ -50,7 +50,7 @@ const teamPrompt = () => {
             {
                 type: 'list',
                 choices: ['engineer', 'intern', 'done'],
-                message: 'Selecy the teammate type you would like to add to the team. If you are done adding to the team, select done',
+                message: 'Select the teammate type you would like to add to the team. If you are done adding to the team, select done',
                 name: 'choice'
             }
         ])
