@@ -56,6 +56,7 @@ const teamPrompt = () => {
         ])
         .then(answer => {
             if (answer.choice === 'done') {
+                // here i will return the function that's going to build the html page for the team with the team object given as a parameter
                 return console.log(team);
             }
             return addTeammate(answer.choice);
