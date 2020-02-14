@@ -4,6 +4,10 @@ const Manager = require('./lib/manager');
 const Intern = require('./lib/intern');
 const Engineer = require('./lib/engineer');
 const questions = require('./lib/questions');
+const fs = require('fs');
+// const managerhtml = require('./templates/managerhtml');
+// const engineerhtml = require('./templates/engineerhtml');
+// const internhtml = require('./templates/internhtml');
 
 
 const team = [];
@@ -32,7 +36,7 @@ const teamPrompt = () => {
         .then(answer => {
             if (answer.choice === 'done') {
                 // here i will return the function that's going to build the html page for the team with the team object given as a parameter
-                return console.log(team);
+                return generateHTMLstring(team);
             }
             return addTeammate(answer.choice);
         })
@@ -63,6 +67,90 @@ const addTeammate = role => {
     }
 }
 
+let htmlString = '';
+
+const generateHTMLstring = team => {
+    console.log(team);
+
+    for (let i = 0; i < team.length; i++) {
+
+        let teammate = team[i];
+        let html = `
+                    <div class="card col-4">
+                    <div class="card-body">
+                        <h3 class="card-title">${teammate.name}</h3>
+                        <h3 class="card-text">${teammate.getRole()}</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${teammate.id}</li>
+                        <li class="list-group-item">Email: ${teammate.email}</li>
+                        `
+
+        switch (teammate.getRole()) {
+
+            case 'Manager':
+                html += `<li class="list-group-item">Office Number: ${teammate.officeNumber}</li>
+                    </ul>
+                    </div>
+                    `
+                // console.log(html);
+                break
+
+            case 'Engineer':
+                html += `<li class="list-group-item">GitHub: ${teammate.github}</li>
+                    </ul>
+                    </div>
+                    `
+                // console.log(html);
+                break
+
+            case 'Intern':
+                html += `<li class="list-group-item">School: ${teammate.school}</li>
+                    </ul>
+                    </div>
+                    `
+                // console.log(html);
+                break
+        }
+        htmlString += html;
+    }
+    // console.log(htmlString)
+
+    let htmlMain = `<!DOCTYPE html>
+<html>
+<head>
+	<title>Team Summary</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+		<h1 class="text-center">My Team</h1>
+	</div>
+	<div class="container">
+		<div class="row justify-content-center">
+			${htmlString}
+		</div>
+    </div>
+</body>
+</html>`;
+
+    writeHtml(htmlMain);
+}
+
+const writeHtml = (htmlString) => {
+    fs.writeFile('./output/summary.html', htmlString, function (err) {
+
+        if (err) {
+            return console.log(err);
+        }
+
+        console.log("Success!");
+
+    });
+}
+
 
 
 
@@ -70,6 +158,5 @@ const addTeammate = role => {
 
 // every team starts with a manager, so this app also begins with adding the team manager. then the user will be prompted to select however many engineers and/or interns they want to have on the team
 addManager();
-
 
 
