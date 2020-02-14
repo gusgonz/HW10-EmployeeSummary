@@ -13,7 +13,7 @@ const mainhtml = `<!DOCTYPE html>
 		<h1 class="text-center">My Team</h1>
 	</div>
 	<div class="container">
-		<div class="row">
+		<div class="row justify-content-center">
 			${'Other html'}
 		</div>
     </div>
