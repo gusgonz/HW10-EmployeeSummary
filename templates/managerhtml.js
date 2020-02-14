@@ -9,6 +9,7 @@ const managerhtml = `
     <li class="list-group-item">Email: ${'email'}</li>
     <li class="list-group-item">Office Number: ${'officeNumber'}</li>
   </ul>
-</div>`
+</div>
+`
 
 module.exports = managerhtml;

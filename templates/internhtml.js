@@ -9,6 +9,7 @@ const internhtml = `
     <li class="list-group-item">Email: ${'email'}</li>
     <li class="list-group-item">School: ${'school'}</li>
   </ul>
-</div>`
+</div>
+`
 
 module.exports = internhtml;
