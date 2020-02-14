@@ -5,9 +5,6 @@ const Intern = require('./lib/intern');
 const Engineer = require('./lib/engineer');
 const questions = require('./lib/questions');
 const fs = require('fs');
-// const managerhtml = require('./templates/managerhtml');
-// const engineerhtml = require('./templates/engineerhtml');
-// const internhtml = require('./templates/internhtml');
 
 
 const team = [];
