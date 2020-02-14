@@ -19,6 +19,25 @@ const addManager = () => {
         });
 }
 
+const teamPrompt = () => {
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                choices: ['engineer', 'intern', 'done'],
+                message: 'Select the teammate type you would like to add to the team. If you are done adding to the team, select done',
+                name: 'choice'
+            }
+        ])
+        .then(answer => {
+            if (answer.choice === 'done') {
+                // here i will return the function that's going to build the html page for the team with the team object given as a parameter
+                return console.log(team);
+            }
+            return addTeammate(answer.choice);
+        })
+}
+
 const addTeammate = role => {
     switch (role) {
         case 'engineer':
@@ -44,24 +63,7 @@ const addTeammate = role => {
     }
 }
 
-const teamPrompt = () => {
-    inquirer
-        .prompt([
-            {
-                type: 'list',
-                choices: ['engineer', 'intern', 'done'],
-                message: 'Select the teammate type you would like to add to the team. If you are done adding to the team, select done',
-                name: 'choice'
-            }
-        ])
-        .then(answer => {
-            if (answer.choice === 'done') {
-                // here i will return the function that's going to build the html page for the team with the team object given as a parameter
-                return console.log(team);
-            }
-            return addTeammate(answer.choice);
-        })
-}
+
 
 
 
