@@ -1,5 +1,3 @@
-
-
 const engineerhtml = `
 <div class="card">
   <div class="card-body">
@@ -19,4 +17,3 @@ const engineerhtml = `
 //         <a href="#" class="card-link">Another link</a>
 //   </div >
 
-module.exports = engineerhtml;

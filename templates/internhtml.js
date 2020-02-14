@@ -11,5 +11,3 @@ const internhtml = `
   </ul>
 </div>
 `
-
-module.exports = internhtml;

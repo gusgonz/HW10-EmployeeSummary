@@ -1,5 +1,3 @@
-
-
 const mainhtml = `<!DOCTYPE html>
 <html>
 <head>
@@ -20,4 +18,3 @@ const mainhtml = `<!DOCTYPE html>
 </body>
 </html>`;
 
-module.exports = mainhtml;
