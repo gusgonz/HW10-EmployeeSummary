@@ -158,7 +158,7 @@ const writeHtml = (htmlString) => {
             return console.log(err);
         }
 
-        console.log("Success!");
+        console.log("Success! You can now open you Team Summary Report file, which can be found the ouput folder of the project repository.");
 
     });
 }
