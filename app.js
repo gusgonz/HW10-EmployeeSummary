@@ -73,14 +73,14 @@ const generateHTMLstring = team => {
 
         let teammate = team[i];
         let html = `
-                    <div class="card col-4">
+                    <div class="card col-3">
                     <div class="card-body">
-                        <h3 class="card-title">${teammate.name}</h3>
-                        <h3 class="card-text">${teammate.getRole()}</h3>
+                        <h2 class="card-title text-center">${teammate.name}</h2>
+                        <h3 class="card-text"><img src="../lib/${teammate.getRole()}-icon.svg"> ${teammate.getRole()}</h3>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${teammate.id}</li>
-                        <li class="list-group-item">Email: ${teammate.email}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${teammate.email}">${teammate.email}</a></li>
                         `
 
         switch (teammate.getRole()) {
@@ -94,7 +94,7 @@ const generateHTMLstring = team => {
                 break
 
             case 'Engineer':
-                html += `<li class="list-group-item">GitHub: ${teammate.github}</li>
+                html += `<li class="list-group-item">GitHub: <a href="https://www.github.com/${teammate.github}">${teammate.github}</a></li>
                     </ul>
                     </div>
                     `
@@ -119,11 +119,26 @@ const generateHTMLstring = team => {
 	<title>Team Summary</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+    .card {
+        margin: 6px;
+    }
+    .jumbotron {
+        background-color: cornflowerblue;
+    }
+
+    h1 {
+        color: cornsilk;
+    }
+
+    img {
+        height: 36px;
+        width: auto;
+    }
     </style>
 </head>
 <body>
     <div class="jumbotron">
-		<h1 class="text-center">My Team</h1>
+		<h1 class="text-center">My Team Report</h1>
 	</div>
 	<div class="container">
 		<div class="row justify-content-center">
